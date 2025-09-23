@@ -21,3 +21,11 @@ main, header, footer {
   border: 1px solid #000000;
   color: #141414;
 }
+header,
+footer {
+  height: 20vh;
+}
+
+main {
+  height: 60vh;
+}
