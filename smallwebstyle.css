@@ -1,0 +1,7 @@
+h1 {
+    font-family: "Helvetica Neue", Arial, sans-serif; /* modern sans-serif */
+}
+body {
+  min-height: 20vh;
+  background-color: #6A7BA2;
+}
