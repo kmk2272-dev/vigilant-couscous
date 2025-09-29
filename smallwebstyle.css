@@ -1,7 +1,13 @@
 h1 {
     font-family: "Helvetica Neue", Arial, sans-serif; /* modern sans-serif */
+    font-weight: 700; /* bold */
 }
 body {
   min-height: 20vh;
   background-color: #6A7BA2;
+}
+
+h5 {
+     font-family: 'Work Sans', sans-serif;
+     
 }
