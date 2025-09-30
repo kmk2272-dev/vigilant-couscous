@@ -1,12 +1,30 @@
 /* 2 column, 1 row grid */
-
-.grid-container {
-display: grid;
-grid-template-columns: 100px 100px;
-grid-template-rows: 100px;
-grid-gap: 20px;
+main, header, footer {
+padding: 20px;
+border: 1px solid #000000;
+color: #141414;
 }
 
 .item {
 background-color: orange;
+}
+.grid-container {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 20px;                     
+max-width: 100%;
+}
+.box {
+  width: 700px;
+  height: 700px;
+  overflow: hidden;        /* prevents image overflow */
+  border: 2px solid #333;  /* optional: visible border */
+  border-radius: 8px;      /* optional: rounded corners */
+}
+.box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+  object-position: center; /* centers the crop (can also use 'top' or 'bottom') */
 }
