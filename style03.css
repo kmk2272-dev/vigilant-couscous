@@ -1,0 +1,11 @@
+/* 2 column, 1 row grid */
+.grid-container {
+display: grid;
+grid-template-columns: 100px 100px;
+grid-template-rows: 100px;
+grid-gap: 20px;
+}
+
+.item {
+background-color: orange;
+}
