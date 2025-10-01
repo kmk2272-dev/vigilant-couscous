@@ -1,14 +1,3 @@
-html, body {
-  cursor: url("./CURSOR IMAGE.png") 8 8, auto;
-}
-a:hover img {
-  opacity: 0.9;
-  transform: scale(1.03);
-  transition: transform .2s ease, opacity .2s ease; /* just for feedback */
-}
-a, a img {
-  cursor: url("./CURSOR IMAGE.png") 8 8, pointer;
-}
 h1 {
     font-family: "Roboto", Arial, sans-serif; /* modern sans-serif */
     font-weight: 700; /* bold */
@@ -54,5 +43,9 @@ max-width: 100%;
   object-position: center; 
   border-radius: 50px;      /* optional: rounded corners */
   border: 1px solid blue;/* centers the crop (can also use 'top' or 'bottom') */
+}
+
+li{
+  line-height: 300%;
 }
 
