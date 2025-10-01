@@ -1,0 +1,62 @@
+html, body {
+  cursor: url("./CURSOR IMAGE.png") 8 8, auto;
+}
+
+header{
+padding: 20px;
+}
+a:hover img {
+  opacity: 0.9;
+  transform: scale(1.03);
+  transition: transform .2s ease, opacity .2s ease; 
+}
+a, a img {
+  cursor: url("./CURSOR IMAGE.png") 8 8, pointer;
+}
+h1 {
+    font-family: "Roboto", Arial, sans-serif; 
+    font-weight: 700; 
+    text-align: center;
+    color: black;
+}
+body {
+  min-height: 20vh;
+  background-color: white;
+}
+
+h5 {
+     font-family: 'Work Sans', sans-serif;
+     
+}
+
+p{
+  font-family: 'Times New Roman', sans-serif;
+  color: blue;
+  line-height: 200%;
+}
+
+
+.grid-container {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 20px;                     
+max-width: 100%;
+}
+
+.img {
+  width: 700px;
+  height: 700px;
+  overflow: hidden;        
+  border-radius: 10px;      
+
+}
+.box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+  object-position: center; 
+  border-radius: 50px;      
+  border: 1px solid yellowgreen;
+}
+
