@@ -1,3 +1,25 @@
+html, body {
+  cursor: url("./CURSOR IMAGE.png") 8 8, auto;
+}
+
+header{
+padding: 20px;
+}
+a:hover img {
+  opacity: 0.9;
+  transform: scale(1.03);
+  transition: transform .2s ease, opacity .2s ease; 
+}
+a, a img {
+  cursor: url("./CURSOR IMAGE.png") 8 8, pointer;
+}
+figcaption {
+  text-align: center;
+}
+ol {
+  margin: 0 auto;   
+  width: fit-content;
+}
 h1 {
     font-family: "Roboto", Arial, sans-serif; /* modern sans-serif */
     font-weight: 700; /* bold */
@@ -49,3 +71,20 @@ li{
   line-height: 300%;
 }
 
+ol li {
+  margin-bottom: 50px; 
+}
+footer {
+  position: fixed;      
+  bottom: 0;            
+  left: 0;              
+  width: 100%;          
+  background: black;     
+  color: black;         
+  text-align: center;   
+  padding: 10px;
+  z-index: 1000;        
+}
+.webring{
+color: aquamarine;
+}

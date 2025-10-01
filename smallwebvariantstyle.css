@@ -17,7 +17,7 @@ figcaption {
   text-align: center;
 }
 ol {
-  margin: 0 auto;   /* centers the whole <ol> as a block */
+  margin: 0 auto;   
   width: fit-content;
 }
 
@@ -60,3 +60,17 @@ p{
   border: 1px solid yellowgreen;
 }
 
+ol li {
+  margin-bottom: 50px; 
+}
+footer {
+  position: fixed;      
+  bottom: 0;            
+  left: 0;              
+  width: 100%;          
+  background: whitesmoke;     
+  color: white;         
+  text-align: center;   
+  padding: 10px;
+  z-index: 1000;        
+}
