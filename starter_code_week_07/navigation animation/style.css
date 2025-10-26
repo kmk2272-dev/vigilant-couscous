@@ -1,0 +1,26 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.grid-contaiener {
+    display:grid;
+    grid-template-columns: repeat(5,1fr);
+    gap:1em;
+    background:green;
+}
+
+.grid-item{
+    font-family:'Trebuchet MS',sans-serif;
+    padding:20px 30px;
+    color:white;
+    text-transform:uppercase;
+    text-align:center;
+    transition:background-color 80ms easin 300ms;
+
+}
+
+.grid-item:hover {
+    background-color:darkgreen;
+}

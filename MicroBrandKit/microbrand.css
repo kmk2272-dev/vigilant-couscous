@@ -1,0 +1,67 @@
+/*color*/
+
+:root {
+--color-bg: #fafafa;
+--color-text: #003CFF;
+--color-primary: #FF0000; 
+--color-accent: #FFB300;
+}
+body {
+background: var(--color-bg);
+color: var(--color-text);
+}
+a {
+color: var(--color-accent);
+}
+
+/*typography*/
+
+:root {
+--font-heading: 'Space Mono', sans-serif;
+--font-body: 'Barlow', sans-serif;
+--phi:1.618;
+--fs-1: calc(2rem * var(--phi));/* H1 */
+--fs-2: calc(1.5rem * var(--phi));; /* H2 */
+--fs-3: calc(1.25rem * var(--phi));;/* H3 */
+--fs-base: calc(.75rem * var(--phi));;
+}
+
+/*type scale*/
+
+h1 { font-family: var(--font-heading); font-size:
+var(--fs-1); }
+h2 { font-family: var(--font-heading); font-size:
+var(--fs-2); }
+h3 { font-family: var(--font-heading); font-size:
+var(--fs-3); }
+p { font-family: var(--font-body); font-size:
+var(--fs-base); }
+a { font-family: var(--font-body); font-size:
+var(--fs-base); }
+
+  h1 { font-size: var(--fs-1); }
+  h2 { font-size: var(--fs-2); }
+  h3 { font-size: var(--fs-3); }
+
+  /*spacing system*/
+
+  :root {
+--space-1: calc(0.5rem * var(--phi));
+--space-2: calc(1rem * var(--phi));
+--space-3: calc(1.5rem * var(--phi));
+}
+section {
+padding: var(--space-1);
+}
+
+.btn {
+  color: var(--color-primary);        
+  background: white;             
+  border: 2px solid var(--color-primary);
+  padding: var(--space-1) var(--space-2);
+  border-radius: 4px;
+  text-decoration: none;
+  font-family: var(--font-heading);      
+  font-size: var(--fs-2);            
+  cursor: pointer;
+}
