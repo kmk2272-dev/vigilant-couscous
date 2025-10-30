@@ -11,5 +11,5 @@ let sentence_1=`The ${nouns} leaps ${adjectives} when I ${verbs} a rainbow in th
 
 console.log(sentence_1);
 
-let myElement = document.getElementById('sentence')
+let myElement = document.getElementById('special')
 console.log(myElement);

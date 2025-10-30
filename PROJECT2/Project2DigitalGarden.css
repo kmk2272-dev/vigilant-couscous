@@ -1,0 +1,174 @@
+.Title {
+    text-align: center;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 3px;
+}
+
+
+
+.container div{
+   
+    padding:10px;
+    text-align: center;
+}
+
+.OuterSkinSystem h2:hover{
+    opacity: 0.8;
+}
+
+.image img{
+    max-width: 500px;
+    max-height: 500px;
+    width: auto; 
+    height: auto; 
+    object-fit: contain; 
+    transition-duration: .1s;
+    transition-timing-function: ease-in;
+    transition-delay: .1s;
+}
+
+
+/* positioned ancestor for the overlay */
+.image .catwalkoverlay{
+    position: absolute;
+    top: 400px;
+    left: 410px;
+    width: 100px;
+    height: 5%;
+    background: rgba(255,0,0,0.5);
+    opacity: 0;
+    
+    transition: opacity 160ms ease, transform 160ms ease;
+    transform: scale(0.98);
+    border: 2px solid rgba(255,0,0,0.9);
+    border-radius: 4px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+
+.image .catwalkoverlay .visible{
+    opacity: 1;
+    pointer-events: auto; /* allow interaction if desired */
+    transform: scale(1);
+}
+
+.CATWALK h2.hovered-overlay{
+    color: #e00000; /* red */
+    transition: color 120ms ease;
+}
+
+
+
+
+/* image container is the positioned ancestor for hotspot and overlay */
+.image{ position: relative; }
+
+.image .hotspot{
+    position: absolute;
+    top: 50px;
+    left: 350px;
+    width: 50px; /* one third horizontally */
+    height: 55%;
+    background: 000; /* fully transparent */
+    pointer-events: auto; /* capture hover only in this area */
+    display: block;
+}
+
+/* single overlay square - hidden by default */
+.image .overlay{
+    position: absolute;
+    /* adjust these values to place the square over the component you diagram */
+    top: 50px;
+    left: 350px;
+    width: 50px;
+    height: 55%;
+    background: rgba(255,0,0,0.5);
+    opacity: 0;
+    pointer-events: none; /* don't block pointer when hidden */
+    transition: opacity 160ms ease, transform 160ms ease;
+    transform: scale(0.98);
+    border: 2px solid rgba(255,0,0,0.9);
+    border-radius: 4px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+
+/* visible state (applied by JS) */
+.image .overlay.visible{
+    opacity: 1;
+    pointer-events: auto; /* allow interaction if desired */
+    transform: scale(1);
+}
+
+/* CSS fallback: show overlay when directly hovering the hotspot (keeps behavior if JS disabled) */
+.image .hotspot:hover ~ .overlay{ opacity: 1; transform: scale(1); pointer-events: auto; }
+.image .catwalkoverlay:hover{ opacity: 1; transform: scale(1); pointer-events: auto; }
+@media (max-width: 480px){
+    .image .overlay{ top: 20px; left: 20px; width: 120px; height: 120px; }
+}
+
+/* When the overlay is hovered, highlight the RAIN SCREEN heading */
+.OuterSkinSystem h2.hovered-overlay{
+    color: #e00000; /* red */
+    transition: color 120ms ease;
+}
+
+
+
+
+
+
+
+/* Footer navigation styles */
+.footer-nav{
+    position:static;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding:1px;
+    border: solid 1px white;
+    background-color: white
+    
+}
+.footer-list{
+    list-style: none;
+    margin: 0;
+    padding: 0.6rem 1rem;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+.footer-list li{ margin: 0; }
+.footer-btn{
+    display: inline-block;
+    text-decoration: none;
+
+    color: #003CFF;
+    padding: 0.5rem 0.9rem;
+    border-radius: 6px;
+    font-family: Space Mono, sans-serif;
+    font-weight: 200;
+    transition: transform 0.12s ease, opacity 0.12s ease;
+}
+.footer-btn:hover{
+    transform: translateY(-4px);
+    opacity: 0.6;
+}
+.footer-btn:focus{
+    transform: translateY(-2px);
+    opacity: 0.8;
+    outline: none;
+}
+
+/* Responsive: stack buttons on narrow screens */
+@media (max-width: 480px){
+    .footer-list{ flex-direction: column; gap: 0.4rem; padding: 0.6rem; }
+    .footer-btn{ width: 100%; text-align: center; }
+}
+
+/* Make sure body has bottom padding so content isn't obscured by the fixed footer */
+body{ padding-bottom: 4.2rem; }
+

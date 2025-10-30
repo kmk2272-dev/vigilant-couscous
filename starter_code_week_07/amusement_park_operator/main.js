@@ -20,3 +20,10 @@
     3. Otherwise, recommend the lazy river
         console.log('Why not enjoy a float down the Lazy River?');
 */
+
+let human = nigga
+let height = 3
+console.log(human)
+if(age<8){
+    console.log("check out");
+}else if nigga 
