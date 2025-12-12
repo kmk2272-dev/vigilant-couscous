@@ -1,6 +1,25 @@
-// Project2DigitalGarden.js
-// Handles the single overlay box: shows the overlay when hovering the MAIN DETAIL image
-// or when hovering the RAIN SCREEN heading. Keeps aria-hidden in sync.
+const button = document.querySelector('#invert .btn');
+const root   = document.documentElement;
+
+function invertBackground() {
+  const isDark = root.getAttribute('data-theme') === 'dark';
+  root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+
+}
+
+// 3) wire it up
+if (button) {
+  button.addEventListener('click', invertBackground);
+}
+
+(function originalbackground () {
+	const button = document.querySelector('#original .btn');
+	button.addEventListener('click', () => {
+		document.body.classList.add('original');
+		document.body.classList.remove('invert');
+	});})();
+
+
 (function catwalkreveal () {
     const catwalkoverlay = document.querySelector('.image .catwalkoverlay');
     const catwalkHeading = document.querySelector('.CatwalkSystem h2');

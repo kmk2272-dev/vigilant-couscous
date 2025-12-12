@@ -1,3 +1,15 @@
+:root[data-theme="dark"] {
+   --color-bg: darkgray;
+    --color-text: #FFC300;
+    --color-primary: #00FFFF; 
+    --color-accent: #004CFF;
+    
+}
+
+.original {
+    background-color: white;
+}
+
 .Title {
     text-align: center;
 }
@@ -8,6 +20,18 @@
     padding: 3px;
 }
 
+.btn{
+    display: inline-block;
+    text-decoration: none;
+    color: #003CFF;
+    padding: .1rem 0.1rem;
+    text-size-adjust: 1px;
+    border-radius: 2px;
+    border-color: #003CFF;
+    font-family: Space Mono, sans-serif;
+    font-weight: 100;
+    transition: transform 0.12s ease, opacity 0.12s ease;
+}
 
 
 .container div{
@@ -69,7 +93,7 @@
 .image .hotspot{
     position: absolute;
     top: 50px;
-    left: 350px;
+    left: 300px;
     width: 50px; /* one third horizontally */
     height: 55%;
     background: 000; /* fully transparent */
@@ -82,7 +106,7 @@
     position: absolute;
     /* adjust these values to place the square over the component you diagram */
     top: 50px;
-    left: 350px;
+    left: 300px;
     width: 50px;
     height: 55%;
     background: rgba(255,0,0,0.5);
