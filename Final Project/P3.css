@@ -8,7 +8,7 @@
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #3a3a3a;
+  background: #cbcbcb;
   color: #ffffff;
   overflow: hidden; /* no scrollbars – navigation is via drag */
 }
@@ -37,8 +37,8 @@ body {
 /* Big movable plane */
 #canvas {
   position: absolute;
-  width: 300vw;   /* 3x viewport width */
-  height: 300vh;  /* 3x viewport height */
+  width: 500vw;   /* 3x viewport width */
+  height: 500vh;  /* 3x viewport height */
 
   /* Start roughly centered */
   left: -100vw;
@@ -51,15 +51,17 @@ body {
 
 /* Triangular grid layout */
 .tri-grid {
-  --tri-size: 500px;                          /* base triangle side length */
-  --tri-height: calc(var(--tri-size) * 0.866);/* ≈ size * sqrt(3)/2 */
+  --tri-size: 900px;
+  --tri-height: var(--tri-size); /* make blobs live in square cells */
 
   display: grid;
-  grid-template-columns: repeat(10, var(--tri-size));
+  grid-template-columns: repeat(6, var(--tri-size));
   grid-auto-rows: var(--tri-height);
+      align-items: center;
+  justify-content: center;
 }
 
-/* Single triangle cell */
+/* Single cell */
 .tri {
   position: relative;
   width: var(--tri-size);
@@ -67,42 +69,151 @@ body {
   overflow: hidden;
 }
 
-/* Image inside triangle */
+/* Image inside blob */
 .tri img {
+  width: 30%;
+  height: 30%;
+        /* show as much of scan as possible */
+  object-position: center;
+  display: block;
+  filter: grayscale(0.3);
+  opacity: 0.9;             /* slight trace-like translucency */
+  transition: transform 0.2s ease, filter 0.2s ease, opacity 0.2s ease;
+    align-items: center;
+  justify-content: center;
+    scale: .1;
+}
+
+/* Hover: gently bring forward */
+.tri:hover img {
+  opacity: 1;
+  transform: scale(1.03);
+  filter: grayscale(0);
+}
+
+/* Up blob shape */
+.tri-up {
+        
+  clip-path: path("M78.1456,31.76866 C53.506767,40.336117 38.61712,49.789864 29.222458,80.80997 C19.827797,111.83008 15.928127,164.41653 48.89807,192.60052 C81.86801,220.7845 151.70757,224.56601 187.27728,222.26166 C222.847,219.9573 224.14691,211.56711 223.73329,175.70197 C223.31969,139.83679 221.19261,76.4967 212.21155,43.940357 C203.23048,11.384017 187.39545,9.61144 162.28395,12.565735 C137.17242,15.520031 102.784424,23.2012 78.1456,31.76866 z");
+transform: scale(4)
+}
+
+
+/* Down blob shape */
+.tri-down {
+  clip-path: path("M17.374632,183.14503 C30.004374,214.80342 53.78463,219.47194 71.58335,221.22264 C89.38208,222.97333 101.19926,221.8062 101.68659,217.52867 C102.17392,213.25113 91.3314,205.8632 82.49988,198.32501 C73.66836,190.78682 66.84784,183.09834 71.29017,175.25597 C75.7325,167.41359 91.437675,159.4173 103.04113,165.86131 C114.64459,172.30533 122.14631,193.18964 140.1945,206.11195 C158.2427,219.03426 186.83736,223.99457 203.5419,219.9096 C220.24643,215.82466 225.06085,202.69446 226.73859,173.66212 C228.41634,144.62978 226.95743,99.695305 217.98512,70.22529 C209.01283,40.755276 192.52713,26.749723 155.24176,23.321283 C117.95643,19.89284 59.87143,27.041506 31.568544,59.939964 C3.2656615,92.83841 4.7448893,151.48665 17.374632,183.14503 z");
+transform: scale(3)
+}
+
+
+
+/* Soft overlay film for both shapes */
+.tri-up::after,
+.tri-down::after {
+  content: "";
   position: absolute;
-  
+  inset: 0;
+  pointer-events: none;     /* 1.0 = normal, >1 = bigger blob */
+}
+
+  background: radial-gradient(circle at center,
+    rgba(255, 255, 255, 0) 55%,       /* clear middle */
+    rgba(58, 58, 58, 0.7) 100%        /* darker at edge */
+  );
+
+
+.tri-up::after,
+.tri-down::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  /* much steeper gradient + full opacity */
+  background: radial-gradient(circle at center,
+    rgba(0, 0, 0, 0) 35%,    /* clear inner core */
+    rgba(255, 255, 255, 0.511) 65%,     /* start darkening */
+    rgb(255, 0, 0) 100%       /* fully dark edge */
+  );
+
+  opacity: 1;                      /* don’t dilute it */
+  clip-path: inherit;              /* same blob shape */
+  mix-blend-mode: normal;          /* or try multiply/overlay if you want */
+}
+
+.tri img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  scale: .8;
   filter: grayscale(0.3);
+  opacity: 0.8; /* slightly see-through */
   transition: transform 0.2s ease, filter 0.2s ease, opacity 0.2s ease;
+  width: 100%;
+  height: 100%;
+
 }
 
-/* Up-pointing triangle */
-.tri-up {
-  width: 3000px;          /* any size you want */
-  height: 3000px;
-  aspect-ratio: 1 / 1;   /* keep it square-ish */
-  overflow: hidden;      /* hide overflow outside the clip */
-  clip-path: path("M78.1456,31.76866 C53.506767,40.336117 38.61712,49.789864 29.222458,80.80997 C19.827797,111.83008 15.928127,164.41653 48.89807,192.60052 C81.86801,220.7845 151.70757,224.56601 187.27728,222.26166 C222.847,219.9573 224.14691,211.56711 223.73329,175.70197 C223.31969,139.83679 221.19261,76.4967 212.21155,43.940357 C203.23048,11.384017 187.39545,9.61144 162.28395,12.565735 C137.17242,15.520031 102.784424,23.2012 78.1456,31.76866 z");
-}
-/* Down-pointing triangle */
-.tri-down {
-  width: 3000px;          /* any size you want */
-  height: 3000px;
-  aspect-ratio: 1 / 1;   /* keep it square-ish */
-  overflow: scroll;      /* hide overflow outside the clip */
-  clip-path: path("M17.374632,183.14503 C30.004374,214.80342 53.78463,219.47194 71.58335,221.22264 C89.38208,222.97333 101.19926,221.8062 101.68659,217.52867 C102.17392,213.25113 91.3314,205.8632 82.49988,198.32501 C73.66836,190.78682 66.84784,183.09834 71.29017,175.25597 C75.7325,167.41359 91.437675,159.4173 103.04113,165.86131 C114.64459,172.30533 122.14631,193.18964 140.1945,206.11195 C158.2427,219.03426 186.83736,223.99457 203.5419,219.9096 C220.24643,215.82466 225.06085,202.69446 226.73859,173.66212 C228.41634,144.62978 226.95743,99.695305 217.98512,70.22529 C209.01283,40.755276 192.52713,26.749723 155.24176,23.321283 C117.95643,19.89284 59.87143,27.041506 31.568544,59.939964 C3.2656615,92.83841 4.7448893,151.48665 17.374632,183.14503 z");
-}
 
-/* Offset every other tile to make a more triangular pattern */
-.tri:nth-child(odd) {
-  transform: translateY(calc(var(--tri-height) * 0.5));
-}
 
-/* Hover: reveal / emphasize sketch */
+
 .tri:hover img {
-  transform: scale(1.08);
-  filter: grayscale(0);
   opacity: 1;
+  transform: scale(1.1);
+  filter: grayscale(0);
 }
+
+/* container already has position: relative; so labels can sit on top */
+.tri {
+  position: relative;
+  width: var(--tri-size);
+  height: var(--tri-height);
+  overflow: hidden;
+}
+
+/* title label */
+.tri::before {
+  content: attr(data-title);      /* pull text from data-title attribute */
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  padding: 4px 10px;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  background: rgba(255, 0, 0, 0.8);
+  color: #000000;
+  border-radius: 999px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 5;                    /* above the image + vignette */
+}
+
+/* appear on hover */
+.tri:hover::before {
+  opacity: 1;
+  transform: translate(-50%, -4px); /* tiny lift when it appears */
+}
+
+#hover-label {
+  position: fixed;         /* always relative to the viewport */
+  left: 16px;
+  bottom: 16px;
+
+  padding: 6px 12px;
+  font-size: 23px;
+  letter-spacing: 0.03em;
+  background: rgba(255, 255, 255, 0.85);
+  color: #ff0000;
+  border-radius: 0px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;              /* hidden by default */
+  transition: opacity 0.2s ease;
+  z-index: 1000;
+}
+

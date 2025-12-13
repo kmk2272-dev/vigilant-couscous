@@ -65,3 +65,23 @@ window.addEventListener('touchmove', (event) => {
 
 // For your own sanity: check that the script runs
 console.log('P3.js loaded – drag the field!');
+
+const label = document.getElementById('hover-label');
+const tiles = document.querySelectorAll('.tri');
+
+tiles.forEach(tile => {
+  tile.addEventListener('mouseenter', () => {
+    const title = tile.dataset.title || '';
+    if (title) {
+      label.textContent = title;
+      label.style.opacity = '1';
+    } else {
+      label.style.opacity = '0';
+    }
+  });
+
+  tile.addEventListener('mouseleave', () => {
+    label.style.opacity = '0';
+  });
+});
+
