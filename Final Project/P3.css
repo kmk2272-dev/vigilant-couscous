@@ -37,11 +37,11 @@ body {
 /* Big movable plane */
 #canvas {
   position: absolute;
-  width: 500vw;   /* 3x viewport width */
-  height: 500vh;  /* 3x viewport height */
+  width: 300vw;   /* 3x viewport width */
+  height: 300vh;  /* 3x viewport height */
 
   /* Start roughly centered */
-  left: -100vw;
+  left: -200vw;
   top: -100vh;
 
   display: flex;
@@ -51,16 +51,20 @@ body {
 
 /* Triangular grid layout */
 .tri-grid {
-  --tri-size: 900px;
+  --tri-size: 600px;
   --tri-height: var(--tri-size); /* make blobs live in square cells */
 
   display: grid;
-  grid-template-columns: repeat(6, var(--tri-size));
+  grid-template-columns: repeat(3, var(--tri-size));
   grid-auto-rows: var(--tri-height);
       align-items: center;
   justify-content: center;
 }
 
+.tri {
+  outline: 2px dashed rgba(0, 0, 0, 0.5); /* or white if your bg is red */
+  background-color: rgba(0, 0, 0, 0.1);   /* light tint to see the box */
+}
 /* Single cell */
 .tri {
   position: relative;
@@ -92,15 +96,15 @@ body {
 }
 
 /* Up blob shape */
-.tri-up {
+/*.tri-up {
         
   clip-path: path("M78.1456,31.76866 C53.506767,40.336117 38.61712,49.789864 29.222458,80.80997 C19.827797,111.83008 15.928127,164.41653 48.89807,192.60052 C81.86801,220.7845 151.70757,224.56601 187.27728,222.26166 C222.847,219.9573 224.14691,211.56711 223.73329,175.70197 C223.31969,139.83679 221.19261,76.4967 212.21155,43.940357 C203.23048,11.384017 187.39545,9.61144 162.28395,12.565735 C137.17242,15.520031 102.784424,23.2012 78.1456,31.76866 z");
-transform: scale(4)
+transform: scale(3)
 }
 
 
 /* Down blob shape */
-.tri-down {
+/*.tri-down {
   clip-path: path("M17.374632,183.14503 C30.004374,214.80342 53.78463,219.47194 71.58335,221.22264 C89.38208,222.97333 101.19926,221.8062 101.68659,217.52867 C102.17392,213.25113 91.3314,205.8632 82.49988,198.32501 C73.66836,190.78682 66.84784,183.09834 71.29017,175.25597 C75.7325,167.41359 91.437675,159.4173 103.04113,165.86131 C114.64459,172.30533 122.14631,193.18964 140.1945,206.11195 C158.2427,219.03426 186.83736,223.99457 203.5419,219.9096 C220.24643,215.82466 225.06085,202.69446 226.73859,173.66212 C228.41634,144.62978 226.95743,99.695305 217.98512,70.22529 C209.01283,40.755276 192.52713,26.749723 155.24176,23.321283 C117.95643,19.89284 59.87143,27.041506 31.568544,59.939964 C3.2656615,92.83841 4.7448893,151.48665 17.374632,183.14503 z");
 transform: scale(3)
 }
