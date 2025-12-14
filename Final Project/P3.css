@@ -25,6 +25,7 @@ body {
   font-size: 0.8rem;
   backdrop-filter: blur(12px);
   opacity:.75;
+  justify-content: center;
 }
 
 /* Viewport: fills the screen and centers its contents */
@@ -42,6 +43,20 @@ body {
 /* Canvas: no vw/vh, just shrink-wraps its content (the grid) */
 #canvas {
   position: relative;
+  padding: 2000px;   
+    position: relative;
+  /* your existing width/height/transform from drag */
+
+  background-color: #fdfdfd;
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.25) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 1px, transparent 1px);
+  background-size: 60px 60px;
+      /* 200px extra all around */
+    position: relative;
+  display: inline-block;
+  transform-origin: center center; /* zoom around the center */
+
 }
 
 /* Triangular grid layout */
@@ -115,7 +130,7 @@ body {
   display: block;
   scale: 2.0; /* make images larger than their containers */
   filter: grayscale(0.3);
-  opacity: 0.8; /* slightly see-through */
+  opacity: 0.6; /* slightly see-through */
   transition: transform 0.2s ease, filter 0.2s ease, opacity 0.2s ease;
 
   
@@ -160,8 +175,8 @@ body {
   padding: 6px 12px;
   font-size: 23px;
   letter-spacing: 0.03em;
-  background: rgba(255, 255, 255, 0.85);
-  color: #ff0000;
+  background: rgba(0, 0, 0, 0.85);
+  color: #ffffff;
   border-radius: 0px;
   white-space: nowrap;
   pointer-events: none;
@@ -171,4 +186,184 @@ body {
 }
 
 
+/* --- DETAIL OVERLAY --- */
 
+#detail-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;        /* final position: center of screen */
+  justify-content: center;
+  background: rgba(255, 230, 0, 0.25); /* dim backdrop */
+  pointer-events: none;       /* disabled until open */
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: 1000;
+}
+
+/* "open" state toggled via JS */
+#detail-overlay.open {
+  pointer-events: auto;
+  opacity: .92;
+}
+
+.detail-panel {
+  width: 80vw;
+  max-width: 2100px;
+  height: 70vh;
+  background: #ffffff;
+  color: #000000;
+  border-radius: 1px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+
+  display: flex;
+  overflow: hidden;
+
+  /* start off-screen at bottom, then slide to center */
+  transform: translateY(100vh);
+  transition: transform 0.35s ease-out;
+}
+
+/* when overlay is open, slide panel up into center */
+#detail-overlay.open .detail-panel {
+  transform: translateY(0);
+}
+
+/* close button */
+.detail-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: none;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 999px;
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* left: big image */
+.detail-image {
+  flex: 2;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* right: text blurb */
+.detail-text {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 0.9rem;
+}
+
+.detail-text h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.detail-text p {
+  margin: 0;
+  line-height: 1.5;
+}
+/* --- FILTER BAR --- */
+
+.filter-bar {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+    justify-content: center;  /* center buttons horizontally */
+}
+
+.filter-btn {
+  border: none;
+  padding: 4px 10px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  cursor: pointer;
+   justify-content: center;  /* center buttons horizontally */
+}
+
+.filter-btn.is-active {
+  background: #ffffff;
+  color: #000000;
+}
+
+/* --- TILE HIGHLIGHT / DIM --- */
+
+.tri {
+  /* keep what you already had + add smooth transitions */
+  transition:
+    opacity 0.2s ease,
+    filter 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* when filtered, non-matching tiles get this */
+.tri.is-dim {
+  opacity: 0.18;
+  filter: grayscale(1);
+  transform: rotate(var(--blob-rot)) scale(0.96);
+  /* when a tile is dimmed by the filter */
+}
+
+
+/* matching tiles can get a little emphasis if you like */
+.tri.is-highlight {
+  opacity: 1;
+  filter: none;
+  transform: rotate(var(--blob-rot)) scale(1.02);
+}
+
+
+
+
+.site-header {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
+  background: rgba(208, 208, 208, 0.7);
+  padding: 0.75rem 1rem;
+  border-radius: 9px;
+  font-size: 0.8rem;
+  backdrop-filter: blur(12px);
+}
+
+/* filter bar now independent */
+.filter-bar {
+  position: fixed;
+  top: 1rem;            /* vertical position */
+  left: 50%;
+  transform: translateX(-50%);
+
+  z-index: 10;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+}

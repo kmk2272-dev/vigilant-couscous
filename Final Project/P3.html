@@ -5,12 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Desk Crit</title>
     <link rel="stylesheet" href="P3.css">
+    <header class="site-header">
+
+ 
+</header>
+ <div class="filter-bar">
+    <button class="filter-btn is-active" data-filter="all">all</button>
+    <button class="filter-btn" data-filter="plan">plan</button>
+    <button class="filter-btn" data-filter="section">section</button>
+    <button class="filter-btn" data-filter="perspective">perspective</button>
+    <button class="filter-btn" data-filter="axon">axon</button>
+  </div>
 </head>
 <body>
 <div id="hover-label"></div>
 
   <header class="site-header">
-    <h1>Trace Field</h1>
+    <h1>Digital Desk Crit</h1>
     <p>Drag to navigate a triangular archive of trace-paper sketches.</p>
   </header>
 
@@ -19,39 +30,90 @@
     <div id="canvas">
       <div class="tri-grid">
        
-        <div class="tri tri-up" data-title="First Sketch Idea">
-          <img src="scans/img007.jpg" alt="Sketch 1"> </div>
+        <div class="tri tri-up" data-title="First Sketch Idea"
+         data-blurb="Study of vertical circulation between two studio partners, exploring overlap and divergence."
+         data-type="plan">
+          <img src="scans/img007.jpg" alt="Sketch 1"></div>
 
-        <div class="tri tri-down" data-title="sketch seewewwewew1225">
+        <div class="tri tri-down" data-title="sketch seewewwewew1225"
+         data-blurb="Study of vertical circulation between two studio partners, exploring overlap and divergence."
+         data-type="plan">
           <img src="scans/img008.jpg" alt="Sketch 2"> </div>
 
-        <div class="tri tri-up" data-title="sketch session feafeaw225">
+        <div class="tri tri-up" data-title="sketch session feafeaw225"
+         data-blurb="Study of vertical circulation between two studio partners, exploring overlap and divergence."
+         data-type="axon">
           <img src="scans/img009.jpg" alt="Sketch 3"> </div>
 
-        <div class="tri tri-down" data-title="sketch ssfasion 09sfasfsa1225">
+        <div class="tri tri-down" data-title="sketch ssfasion 09sfasfsa1225"
+         data-blurb="Study of vertical circulation between two studio partners, exploring overlap and divergence."
+         data-type="section">
           <img src="scans/img010.jpg" alt="Sketch 4"> </div>
 
-        <div class="tri tri-down" data-title="sketch fsafdadas91225">
+        <div class="tri tri-down" data-title="sketch fsafdadas91225"
+         data-blurb="Study of vertical circulation between two studio partners, exploring overlap and divergence."
+         data-type="perspective">
           <img src="scans/img011.jpg" alt="Sketch 5"> </div>
 
-        <div class="tri tri-up"data-title="Sketch Idea number 6">
+        <div class="tri tri-up"data-title="Sketch Idea number 6"
+        data-blurb="Study of vertical circulation between two studio partners, exploring overlap and divergence."
+        data-type="perspective">
           <img src="scans/img012.jpg" alt="Sketch 6"> </div>
 
-        <div class="tri tri-up"data-title="Sketch Idea number 7">
+        <div class="tri tri-up"data-title="Sketch Idea number 7"
+        data-blurb="Study of vertical circulation between two studio partners, exploring overlap and divergence."
+         data-type="perspective">
           <img src="scans/img013.jpg" alt="Sketch 6"> </div>
 
-        <div class="tri tri-up"data-title="Sketch Idea number 6">
+        <div class="tri tri-up"data-title="Sketch Idea number 6"
+        data-blurb="Study of vertical circulation between two studio partners, exploring overlap and divergence."
+         data-type="perspective">
           <img src="scans/img014.jpg" alt="Sketch 6"> </div>
 
-        <div class="tri tri-up"data-title="Sketch Idea number 6">
-          <img src="scans/img015.jpg" alt="Sketch 6"> </div>
+        <div class="tri tri-up"data-title="Sketch Idea number 6"
+        data-blurb="Study of vertical circulation between two studio partners, exploring overlap and divergence."
+         data-type="perspective">
+
+          <img src="scans/img015.jpg" alt="Sketch 6"> </div
+          data-blurb="Study of vertical circulation between two studio partners, exploring overlap and divergence."
+         data-type="perspective">>
         
         <div class="tri tri-up"data-title="Sketch Idea number 6">
           <img src="scans/img016.jpg" alt="Sketch 6"> </div>
 
+        <div class="tri tri-up"data-title="Sketch Idea number 6">
+          <img src="scans/img017.png" alt="Sketch 6"> </div>
+
+        <div class="tri tri-up"data-title="Sketch Idea number 6">
+          <img src="scans/img018.png" alt="Sketch 6"> </div>
+
+        <div class="tri tri-up"data-title="Sketch Idea number 6">
+          <img src="scans/img019.jpg" alt="Sketch 6"> </div>
+
+        <div class="tri tri-up"data-title="Sketch Idea number 6">
+          <img src="scans/img020.jpg" alt="Sketch 6"> </div>
+          
+
       </div>
     </div>
   </main>
+<!-- Detail overlay for enlarged view -->
+<div id="detail-overlay">
+  <div class="detail-panel">
+    <button class="detail-close" aria-label="Close detail view">×</button>
+
+    <div class="detail-image">
+      <img id="detail-img" src="" alt="">
+    </div>
+
+    <div class="detail-text">
+      <h2 id="detail-title">Title</h2>
+      <p id="detail-blurb">
+        Select a sketch to see a larger view and notes about the drawing.
+      </p>
+    </div>
+  </div>
+</div>
 
    <!--javascript-->
    <script src="P3.js" defer></script>
