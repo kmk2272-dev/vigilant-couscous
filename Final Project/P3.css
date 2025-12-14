@@ -65,7 +65,7 @@ body {
   --tri-height: var(--tri-size); /* make blobs live in square cells */
 
   display: grid;
-  grid-template-columns: repeat(4, var(--tri-size));
+  grid-template-columns: repeat(8, var(--tri-size));
   grid-auto-rows: var(--tri-height);
       align-items: center;
   justify-content: center;
